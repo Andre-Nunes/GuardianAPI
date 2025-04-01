@@ -1,6 +1,7 @@
 name: Guardian Scraper (hourly)
 
 on:
+  push:                     # Executa ao fazer push
   schedule:
     - cron: '0 * * * *'  # Executa de hora a hora
   workflow_dispatch:      # Permite executar manualmente no GitHub
@@ -8,6 +9,9 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write       # Permite fazer commits no repositório
 
     steps:
     - name: Checkout do repositório
